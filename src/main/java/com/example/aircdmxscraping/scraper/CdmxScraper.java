@@ -59,6 +59,7 @@ public class CdmxScraper extends AirScraper{
             this.temperature = this.temperatura(doc);
             this.dataAS = this.indiceAS(doc);
             this.dataCDMX = this.indiceCDMX(doc);
+            this.checkId(doc);
         }
     }
 }

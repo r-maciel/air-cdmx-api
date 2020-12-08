@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.example.aircdmxscraping.repositories.DelegacionesID;
+
 /* Scraping packages*/
 import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
@@ -84,6 +86,16 @@ public class AirScraper {
         /* Temperatura */
         String temperatura = doc.selectFirst("#lateral_renglonunodatoscalidadaireahora #lateral_calidadairetemperaturaahora").text();
         return temperatura;
+    }
+
+    protected void checkId(Document doc) {
+        if(DelegacionesID.ids.isEmpty() == true){
+            DelegacionesID.ids = this.getIdDelegacion(doc);
+            System.out.println("Sí vacío");
+        }
+        else{
+            System.out.println("No vacío");
+        }
     }
 
     public AirScraper() {
