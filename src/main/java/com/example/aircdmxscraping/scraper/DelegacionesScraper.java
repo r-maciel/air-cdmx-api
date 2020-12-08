@@ -24,30 +24,37 @@ public class DelegacionesScraper extends AirScraper{
         }
         else{
             String allText = doc.selectFirst("#lateral_renglontresdatoscalidadaireahora").text();
+            System.out.println(allText);
             allText = allText.replace("Índice de Calidad del Aire CDMX: ", "");
             allText = allText.replace(" ● ", "|-|");
             allText = allText.replace(" Contaminante: ", "|-|");
-            allText = allText.replace(" Índice : ", "");
+            allText = allText.replace(" Índice :", "");
             indiceCDMX = new ArrayList<>(Arrays.asList(allText.split("\\|-\\|")));
 
             /* Obtener el indice y agregarlo a la lista */
             Element element = doc.selectFirst("#lateral_renglontresdatoscalidadaireahora script"); 
-            String indice = "";     
-            for (DataNode node : element.dataNodes()) {
-                indice = node.getWholeData();
-            }  
-            indice = indice.replace("document.write(unescape('", "");
-            indice = indice.replace("'))", "");
-            try {
-                indice = URLDecoder.decode(indice, "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                System.out.println("Excepción al obtener indice" + e.getMessage());
+            if(element != null){
+                String indice = "";     
+                for (DataNode node : element.dataNodes()) {
+                    indice = node.getWholeData();
+                }  
+                indice = indice.replace("document.write(unescape('", "");
+                indice = indice.replace("'))", "");
+                try {
+                    indice = URLDecoder.decode(indice, "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    System.out.println("Excepción al obtener indice" + e.getMessage());
+                }
+                indice = indice.replace("<!-- Solo un ejemplo -->\n<script type=\"text/javascript\">\ndocument.write('", "");
+                indice = indice.replace("document.write(unescape('", "");
+                indice = indice.replace("')\n</script>\n", "");
+                indiceCDMX.add(null);
+                indiceCDMX.add(indice);
             }
-            indice = indice.replace("<!-- Solo un ejemplo -->\n<script type=\"text/javascript\">\ndocument.write('", "");
-            indice = indice.replace("document.write(unescape('", "");
-            indice = indice.replace("')\n</script>\n", "");
-            indiceCDMX.add(null);
-            indiceCDMX.add(indice);
+
+            if(indiceCDMX.size() < 4){
+                indiceCDMX.clear();
+            }
         }
 
         return indiceCDMX;

@@ -84,16 +84,23 @@ public class AirScraper {
 
     protected List<String> indiceAS(Document doc) {
         /* Índice AIRE Y SALUD */
-        String allText = doc.selectFirst("#lateral_renglondosdatoscalidadaireahora").text();
+        List<String> indiceAS = new ArrayList<>();
+        String statusIndice = doc.selectFirst("#lateral_renglondosdatoscalidadaireahora  strong:nth-child(3)").text();
+        if(statusIndice.equals("SIN DATOS O EN MANTENIMIENTO") == true){
+            return indiceAS;
+        }
+        else{
+            String allText = doc.selectFirst("#lateral_renglondosdatoscalidadaireahora").text();
 
-        allText = allText.replace("Índice AIRE Y SALUD: ", "");
-        allText = allText.replace(" ● Contaminante(s): ", "|-|");
-        allText = allText.replace(" Riesgo: ", "|-|");
-        allText = allText.replace(" Recomendaciones para: - Grupo Sensibles ", "|-|");
-        allText = allText.replace(" - Para toda la población ", "|-|");
+            allText = allText.replace("Índice AIRE Y SALUD: ", "");
+            allText = allText.replace(" ● Contaminante(s): ", "|-|");
+            allText = allText.replace(" Riesgo: ", "|-|");
+            allText = allText.replace(" Recomendaciones para: - Grupo Sensibles ", "|-|");
+            allText = allText.replace(" - Para toda la población ", "|-|");
 
-        /* Datos separados */
-        List<String> indiceAS = new ArrayList<>(Arrays.asList(allText.split("\\|-\\|")));
+            /* Datos separados */
+            indiceAS = Arrays.asList(allText.split("\\|-\\|"));
+        }
         return indiceAS;
     }
 
