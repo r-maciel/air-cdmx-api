@@ -2,6 +2,10 @@ package com.example.aircdmxscraping.api;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_ABSENT)
 public class IndiceCDMX {
     private final String airQuality;
     private final String pollutants;

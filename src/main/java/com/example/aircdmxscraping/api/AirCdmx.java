@@ -2,6 +2,10 @@ package com.example.aircdmxscraping.api;
 import com.example.aircdmxscraping.scraper.CdmxScraper;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_ABSENT)
 public class AirCdmx {
 	private final String temperature;
 	private final String date;
