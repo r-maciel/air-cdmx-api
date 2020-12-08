@@ -8,8 +8,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_ABSENT)
 public class IndiceAS {
     private final String airQuality;
-    private final String pollutants;
     private final String risk;
+    private final String pollutants;
     private Recommendations recommendations;
 
     public IndiceAS(List<String> data) {

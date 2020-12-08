@@ -68,6 +68,20 @@ public class AirScraper {
         return delegacionesArray;
     }
 
+    protected List<String> getNameDelegacion(Document doc) {
+        /* Obtener indices */
+        Elements delegaciones = doc.select("#contenedorinformacion02 div form select option");
+
+        List<String> delegacionesArray = new ArrayList<>(); 
+        
+        for(int i = 0; i < 16; i++){
+            Element delegacion = delegaciones.get(1 + i);
+            delegacionesArray.add(delegacion.text()); 
+        }
+
+        return delegacionesArray;
+    }
+
     protected List<String> indiceAS(Document doc) {
         /* Índice AIRE Y SALUD */
         String allText = doc.selectFirst("#lateral_renglondosdatoscalidadaireahora").text();
@@ -92,6 +106,7 @@ public class AirScraper {
     protected void checkId(Document doc) {
         if(DelegacionesID.ids.isEmpty() == true){
             DelegacionesID.ids = this.getIdDelegacion(doc);
+            DelegacionesID.places = this.getNameDelegacion(doc);
             System.out.println("Sí vacío");
         }
         else{

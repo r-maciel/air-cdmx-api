@@ -69,10 +69,12 @@ public class DelegacionesScraper extends AirScraper{
             this.checkId(doc);
             
             String delegacionID = DelegacionesID.ids.get(delegacion);
+            String delegacionName = DelegacionesID.places.get(delegacion);
 
             doc = this.getHtmlDocumentDeleg(this.url, delegacionID);
 
             this.temperature = this.temperatura(doc);
+            this.place = delegacionName;
             this.dataAS = this.indiceAS(doc);
             this.dataCDMX = this.indiceCDMX(doc);
         }

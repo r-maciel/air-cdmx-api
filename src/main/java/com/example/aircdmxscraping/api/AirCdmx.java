@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_ABSENT)
 public class AirCdmx {
-	private final String temperature;
 	private final String place;
+	private final String temperature;
 	private final String date;
 	private IndiceAS indiceAS;
 	private IndiceCDMX indiceCDMX;

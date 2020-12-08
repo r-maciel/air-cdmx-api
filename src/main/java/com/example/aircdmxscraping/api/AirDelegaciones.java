@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_ABSENT)
 public class AirDelegaciones{
+	private String place;
 	private String temperature;
 	private String date;
 	private IndiceAS indiceAS;
@@ -14,12 +15,17 @@ public class AirDelegaciones{
 
 	public AirDelegaciones(int del) {
 		DelegacionesScraper cdmx = new DelegacionesScraper(del);
+		this.place = cdmx.getPlace();
 		this.temperature = cdmx.getTemperature();
 		this.date = cdmx.getCurrentDate();
 		this.indiceAS = new IndiceAS(cdmx.getDataAS());
 		this.indiceCDMX = new IndiceCDMX(cdmx.getDataCDMX());
 	}
 
+	public String getPlace() {
+		return place;
+	}
+	
 	public String getTemperature() {
 		return temperature;
 	}
