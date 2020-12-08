@@ -26,7 +26,7 @@ public class CdmxScraper extends AirScraper{
             String allText = doc.selectFirst("#lateral_renglontresdatoscalidadaireahora").text();
             allText = allText.replace("Índice anterior: ", "");
             allText = allText.replace(" ● ", "|-|");
-            allText = allText.replace("Contaminante: ", "|-|");
+            allText = allText.replace(" Contaminante: ", "|-|");
             allText = allText.replace(" Índice : Estación: ", "|-|");
             indiceCDMX = new ArrayList<>(Arrays.asList(allText.split("\\|-\\|")));
 
