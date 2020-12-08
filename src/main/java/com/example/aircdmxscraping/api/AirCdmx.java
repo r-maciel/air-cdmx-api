@@ -8,16 +8,22 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_ABSENT)
 public class AirCdmx {
 	private final String temperature;
+	private final String place;
 	private final String date;
 	private IndiceAS indiceAS;
 	private IndiceCDMX indiceCDMX;
 
 	public AirCdmx() {
 		CdmxScraper cdmx = new CdmxScraper();
+		this.place = cdmx.getPlace();
 		this.temperature = cdmx.getTemperature();
 		this.date = cdmx.getCurrentDate();
 		this.indiceAS = new IndiceAS(cdmx.getDataAS());
 		this.indiceCDMX = new IndiceCDMX(cdmx.getDataCDMX());
+	}
+
+	public String getPlace() {
+		return place;
 	}
 
 	public String getTemperature() {

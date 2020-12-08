@@ -56,6 +56,7 @@ public class CdmxScraper extends AirScraper{
         if(this.getStatusConnectionCode(this.url) == 200){
             Document doc = this.getHtmlDocument(this.url);
 
+            this.place = "Ciudad de México";
             this.temperature = this.temperatura(doc);
             this.dataAS = this.indiceAS(doc);
             this.dataCDMX = this.indiceCDMX(doc);

@@ -22,6 +22,7 @@ import java.time.LocalDateTime;
 public class AirScraper {
     protected final String url = "http://www.aire.cdmx.gob.mx/default.php?opc=%27YqBhnmI=%27";
     protected String temperature;
+    protected String place;
     protected List<String> dataAS = new ArrayList<>();
     protected List<String> dataCDMX = new ArrayList<>();
     protected String currentDate;
@@ -120,6 +121,10 @@ public class AirScraper {
 
     public String getCurrentDate() {
         return currentDate;
+    }
+
+    public String getPlace() {
+        return place;
     }
     
 }
