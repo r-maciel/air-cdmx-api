@@ -19,4 +19,13 @@ public class AirController {
 	public AirDelegaciones delegaciones(@PathVariable int id) {
 		return new AirDelegaciones(id);
 	}
+
+	@GetMapping("/delegaciones")
+	public AirDelegaciones[] delegacionesAll() {
+		AirDelegaciones delegaciones[] = new AirDelegaciones[16];
+		for(int i = 0; i < 16; i++){
+			delegaciones[i] = new AirDelegaciones(i);
+		}
+		return delegaciones;
+	}
 }
