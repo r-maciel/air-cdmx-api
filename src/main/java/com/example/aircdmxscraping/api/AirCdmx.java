@@ -1,18 +1,15 @@
 package com.example.aircdmxscraping.api;
+
+import com.example.aircdmxscraping.api.partials.Air;
+import com.example.aircdmxscraping.api.partials.IndiceAS;
+import com.example.aircdmxscraping.api.partials.IndiceCDMX;
 import com.example.aircdmxscraping.scraper.CdmxScraper;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_ABSENT)
-public class AirCdmx {
-	private final String place;
-	private final String temperature;
-	private final String date;
-	private IndiceAS indiceAS;
-	private IndiceCDMX indiceCDMX;
-
+public class AirCdmx extends Air{
 	public AirCdmx() {
 		CdmxScraper cdmx = new CdmxScraper();
 		this.place = cdmx.getPlace();
@@ -21,27 +18,4 @@ public class AirCdmx {
 		this.indiceAS = new IndiceAS(cdmx.getDataAS());
 		this.indiceCDMX = new IndiceCDMX(cdmx.getDataCDMX());
 	}
-
-	public String getPlace() {
-		return place;
-	}
-
-	public String getTemperature() {
-		return temperature;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	@JsonProperty("indiceAireSalud")
-	public IndiceAS getIndiceAS() {
-		return indiceAS;
-	}
-
-	@JsonProperty("indiceCDMX")
-	public IndiceCDMX getIndiceCDMX() {
-		return indiceCDMX;
-	}
-
 }

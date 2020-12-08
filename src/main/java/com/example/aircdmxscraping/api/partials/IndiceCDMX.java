@@ -1,4 +1,4 @@
-package com.example.aircdmxscraping.api;
+package com.example.aircdmxscraping.api.partials;
 
 import java.util.List;
 
