@@ -19,8 +19,8 @@ public class CdmxScraper extends AirScraper{
         /* Índice CDMX */
         List<String> indiceCDMX = new ArrayList<>();
         String statusIndice = doc.selectFirst("#lateral_renglontresdatoscalidadaireahora  strong:nth-child(3)").text();
-        if(statusIndice == "SIN COBERTURA"){
-            System.out.println("Text: " + statusIndice);
+        if(statusIndice.equals("SIN COBERTURA") == true){
+            return indiceCDMX;
         }
         else{
             String allText = doc.selectFirst("#lateral_renglontresdatoscalidadaireahora").text();
