@@ -114,10 +114,6 @@ public class AirScraper {
         if(DelegacionesID.ids.isEmpty() == true){
             DelegacionesID.ids = this.getIdDelegacion(doc);
             DelegacionesID.places = this.getNameDelegacion(doc);
-            System.out.println("Sí vacío");
-        }
-        else{
-            System.out.println("No vacío");
         }
     }
 

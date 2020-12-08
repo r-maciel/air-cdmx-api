@@ -24,7 +24,6 @@ public class DelegacionesScraper extends AirScraper{
         }
         else{
             String allText = doc.selectFirst("#lateral_renglontresdatoscalidadaireahora").text();
-            System.out.println(allText);
             allText = allText.replace("Índice de Calidad del Aire CDMX: ", "");
             allText = allText.replace(" ● ", "|-|");
             allText = allText.replace(" Contaminante: ", "|-|");
