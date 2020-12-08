@@ -1,5 +1,4 @@
 package com.example.aircdmxscraping.api;
-
 import com.example.aircdmxscraping.scraper.DelegacionesScraper;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
