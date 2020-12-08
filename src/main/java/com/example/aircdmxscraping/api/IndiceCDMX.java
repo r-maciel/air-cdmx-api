@@ -12,13 +12,25 @@ public class IndiceCDMX {
     private final String risk;
     private final String station;
     private final String rating;
+    private final String message;
 
     public IndiceCDMX(List<String> data) {
-        this.airQuality = data.get(0);
-        this.pollutants = data.get(2);
-        this.risk = data.get(1);
-        this.station = data.get(3);
-        this.rating = data.get(4);
+        if(data.isEmpty() == true){
+            this.airQuality = null;
+            this.pollutants = null;
+            this.risk = null;
+            this.station = null;
+            this.rating = null;
+            this.message = "SIN COBERTURA";
+        }
+        else{
+            this.airQuality = data.get(0);
+            this.pollutants = data.get(2);
+            this.risk = data.get(1);
+            this.station = data.get(3);
+            this.rating = data.get(4);
+            this.message = null;
+        }
     }
 
     public String getAirQuality() {
@@ -26,6 +38,9 @@ public class IndiceCDMX {
     }
 
     public String[] getPollutants() {
+        if(pollutants == null){
+            return null;
+        }
         return pollutants.split(",");
     }
 
@@ -41,6 +56,7 @@ public class IndiceCDMX {
         return rating;
     }
 
-    
-    
+    public String getMessage() {
+        return message;
+    } 
 }

@@ -12,19 +12,12 @@ public class AirDelegaciones{
 	private IndiceAS indiceAS;
 	private IndiceCDMX indiceCDMX;
 
-	private IndiceCDMX checkIndiceCDMX (DelegacionesScraper cdmx){
-		if(cdmx.getDataCDMX().isEmpty() == true){
-			return null;
-		}
-		return new IndiceCDMX(cdmx.getDataCDMX());
-	}
-
 	public AirDelegaciones(int del) {
 		DelegacionesScraper cdmx = new DelegacionesScraper(del);
 		this.temperature = cdmx.getTemperature();
 		this.date = cdmx.getCurrentDate();
 		this.indiceAS = new IndiceAS(cdmx.getDataAS());
-		this.indiceCDMX = checkIndiceCDMX(cdmx);
+		this.indiceCDMX = new IndiceCDMX(cdmx.getDataCDMX());
 	}
 
 	public String getTemperature() {
