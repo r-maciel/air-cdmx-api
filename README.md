@@ -1,5 +1,6 @@
 # Air CDMX API
-Simple API for air CDMX quality. Data is obtained scraping official  [air CDMX website](http://aire.cdmx.gob.mx "official air CDMX website").
+Simple API for CDMX air quality. Data is obtained scraping official  [air CDMX website](http://aire.cdmx.gob.mx "official air CDMX website").
+This API obtaines data for each individual CDMX delegation, and for general CDMX air status.
 
 ## Build with
 - Java 11
